@@ -5,7 +5,6 @@
 - [Epics](#epics)
 - [User Story Backlog](#user-story-backlog)
 - [MVP Scope](#mvp-scope)
-- [Glossary](#glossary)
 ## Document Purpose
 Документ описывает пользовательские сценарии и приоритеты MVP на основе User Story Map.
 ## User Story Map
