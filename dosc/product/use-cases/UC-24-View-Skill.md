@@ -1,4 +1,4 @@
-# UC-14 View Skill
+# UC-24 View Skill
 ## Related User Stories
 - US04 – Управление навыком
 - US06 – Просмотр действий навыка
