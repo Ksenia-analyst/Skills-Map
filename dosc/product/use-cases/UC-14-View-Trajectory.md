@@ -1,6 +1,7 @@
 # UC-14 View Trajectory
 ## Related User Stories
-Indirectly related to US01 – Создание траектории
+- Indirectly related to US01 – Создание траектории
+- US02 – Поиск навыка
 ## Template
 Based on the [View Entity Template](./templates/View-Entity-Template.md)
 ## Extensions to Main Scenario
