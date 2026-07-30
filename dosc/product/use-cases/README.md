@@ -11,10 +11,10 @@
 - [UC-14 View Trajectory](./UC-14-View-Trajectory.md) 
 ### UC-2. Manage Skills
 **Related User Stories:** US04, US06
-- UC-21 Create Skill
-- UC-22 Update Skill
-- UC-23 Delete Skill
-- UC-24 View Skill 
+- [UC-21 Create Skill](./UC-21-Create-Skill.md)
+- [UC-22 Update Skill](./UC-22-Update-Skill.md)
+- [UC-23 Delete Skill](./UC-23-Delete-Skill.md)
+- [UC-24 View Skill](./UC-24-View-Skill.md) 
 ### UC-3. Manage Actions
 **Related User Stories:** US05, US07, US011
 - UC-31 Create Action
