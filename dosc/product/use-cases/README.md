@@ -6,9 +6,9 @@
 ### UC-1. Manage Trajectories
 **Related User Stories:** US01, US02
 - [UC-11 Create Trajectory](./UC-11-Create-Trajectory.md)
-- UC-12 Update Trajectory
-- UC-13 Delete Trajectory
-- UC-14 View Trajectory 
+- [UC-12 Update Trajectory](./UC-12-Update-Trajectory.md)
+- [UC-13 Delete Trajectory](./UC-13-Delete-Trajectory.md)
+- [UC-14 View Trajectory](./UC-14-View-Trajectory.md) 
 ### UC-2. Manage Skills
 **Related User Stories:** US04, US06
 - UC-21 Create Skill
