@@ -5,9 +5,10 @@
 - [Trigger](#trigger)
 - [Preconditions](#preconditions)
 - [Postconditions](#postconditions)
-- [Main scenario](#main-scenario)
-- [Alternative Scenarios and Extensions](#alternative-scenarios-and-extensions)
+- [Main Scenario and Extensions](#main-scenario-and-extensions)
+- [Alternative Scenarios](#alternative-scenarios)
 - [Exceptions](#exceptions)
+- [Linked Entities](#linked-entities)
 - [Business Rules](#business-rules)
 - [Notes](#notes)
 ## User Goal
@@ -23,7 +24,7 @@
 ## Postconditions
 - POST-1 Success Guarantee: Навык привязан к действию.
 - POST-2 Minimal Guarantee: В случае ошибки состояние системы не изменяется.
-## Main Scenario and Extentions
+## Main Scenario and Extensions
 1. Пользователь выбирает операцию добавления навыка к действию.
 2. Система отображает список траекторий пользователя.
 3. Пользователь выбирает траекторию.
