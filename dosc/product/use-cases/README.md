@@ -17,12 +17,12 @@
 - [UC-24 View Skill](./UC-24-View-Skill.md) 
 ### UC-3. Manage Actions
 **Related User Stories:** US05, US07, US011
-- UC-31 Create Action
-- UC-32 Update Action
-- UC-33 Delete Action
-- UC-34 View Action
-- UC-35 Link Skill to Action
-- UC-36 Unlink Skill from Action 
+- [UC-31 Create Action](./UC-31-Create-Action.md)
+- [UC-32 Update Action](./UC-32-Update-Action.md)
+- [UC-33 Delete Action](./UC-33-Delete-Action.md)
+- [UC-34 View Action](./UC-34-View-Action.md)
+- [UC-35 Link Skill to Action](./UC-35-Link-Skill-to-Action.md)
+- [UC-36 Unlink Skill from Action](./UC-36-Unlink-Skill-from-Action.md) 
 ## Supporting Use Cases
 ### UC-S. User Authentication
 **Related User Stories:** None
