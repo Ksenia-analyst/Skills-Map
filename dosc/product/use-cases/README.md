@@ -27,4 +27,4 @@
 ### UC-S. User Authentication
 **Related User Stories:** None
 - [UC-S1 Log In](./UC-S1-Log-In.md)
-- [UC-S2 Log Out](./UC-S1-Log-Out.md)
+- [UC-S2 Log Out](./UC-S2-Log-Out.md)
