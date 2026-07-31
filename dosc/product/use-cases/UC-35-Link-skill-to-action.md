@@ -5,8 +5,8 @@
 - [Trigger](#trigger)
 - [Preconditions](#preconditions)
 - [Postconditions](#postconditions)
-- [Main Scenario and Extensions](#main-scenario-and-extensions)
-- [Alternative Scenarios](#alternative-scenarios)
+- [Main Scenario](#main-scenario)
+- [Alternative Scenarios and Extensions](#alternative-scenarios-and-extensions)
 - [Exceptions](#exceptions)
 - [Linked Entities](#linked-entities)
 - [Business Rules](#business-rules)
@@ -24,7 +24,7 @@
 ## Postconditions
 - POST-1 Success Guarantee: Навык привязан к действию.
 - POST-2 Minimal Guarantee: В случае ошибки состояние системы не изменяется.
-## Main Scenario and Extensions
+## Main Scenario
 1. Пользователь выбирает операцию добавления навыка к действию.
 2. Система отображает список траекторий пользователя.
 3. Пользователь выбирает траекторию.
@@ -34,7 +34,7 @@
 7. Система валидирует данные.
 8. Система сохраняет связь между действием и навыком.
 9. Система отображает добавленный навык в списке связанных с действием навыков.
-## Alternative Scenarios
+## Alternative Scenarios and Extensions
 - 3a. Отмена добавления навыка (на шагах 3-4)
 1. Пользователь отменяет добавление навыка до подтверждения сохранения.
 2. Система прекращает выполнение сценария.
