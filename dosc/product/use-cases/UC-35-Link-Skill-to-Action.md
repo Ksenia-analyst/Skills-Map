@@ -1,4 +1,4 @@
-# UC-35 Link skill to action
+# UC-35 Link Skill to Action
 ## Related User Stories
 None (supports US06 – Просмотр действий навыка)
 ## Contents
