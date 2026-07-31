@@ -1,4 +1,4 @@
-# UC-36 Unlink skill from action
+# UC-36 Unlink Skill from Action
 ## Related User Stories
 None (supports US06 – Просмотр действий навыка)
 ## Contents
