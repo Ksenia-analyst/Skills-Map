@@ -1,9 +1,0 @@
-@startuml
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
-
-Person(user, "User")
-System(skillsMap, "Skills Map", "Web application for managing personal learning trajectories, skills, and actions")
-Rel(user, skillsMap, "Uses")
-
-SHOW_LEGEND()
-@enduml
