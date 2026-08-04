@@ -1,0 +1,14 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user, "User")
+Container_Boundary(skillsMap, "Skills Map") {
+  Container(webApp, "Web Application", "Browser-based", "Provides the user interface in the browser")
+  Container(api, "Backend API", "Backend Application", "Provides REST API, handles business logic and data access")
+  ContainerDb(db, "Database", "PostgreSQL", "Stores users, trajectories, skills, actions, and relationships")
+}
+
+Rel(user, webApp, "Uses", "HTTPS")
+Rel(webApp, api, "Calls", "REST/HTTPS")
+Rel_R(api, db, "Reads from and writes to", "SQL")
+SHOW_LEGEND()
+@enduml
