@@ -1,0 +1,1022 @@
+openapi: 3.1.0
+info:
+  version: '1'
+  title: Skills Map API
+  description:
+    The Skills Map API provides functionality for managing learning trajectories, skills,
+    and learning actions, supporting personal skill development and progress
+    tracking.
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/company-bb9/Skills_map/1
+
+tags:
+  - name: trajectories
+    description: Operations related to trajectories
+  - name: skills
+    description: Skill management within trajectories
+  - name: actions
+    description: Action management and skill assignments
+  - name: auth
+    description: User authentication (login, logout)
+  - name: skillAreas
+    description: Groups of related skills within a learning trajectory
+  - name: actionTypes
+    description: Categories of learning actions
+
+security:
+  - bearerAuth: []
+
+paths:
+  /tokens:
+    post:
+      tags:
+        - auth
+      summary: User authentication
+      description: Authenticates the user and returns a Bearer token.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - login
+                - password
+              properties:
+                login:
+                  type: string
+                  description: User login
+                  example: user
+                password:
+                  type: string
+                  format: password
+                  description: User password
+                  example: password132
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json: 
+              schema: 
+                type: object
+                required: 
+                  - token
+                properties:
+                  token:
+                    type: string
+                    description: Bearer token for authenticating subsequent requests
+                    example: skills-map-token
+        '401':
+          description: Invalid credentials
+        '422':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+  
+  /trajectories:
+    post:
+      tags: 
+        - trajectories
+      summary: Create trajectory
+      description: Creates a new learning trajectory.
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: Trajectory name
+                  example: Python developer
+                info:
+                  type:
+                    - string
+                    - 'null'
+                  description: Optional trajectory description
+                  example: null
+      responses: 
+        '201':
+          description: Trajectory created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trajectory'
+        '401':
+          description: Authentication required
+        '409':
+          description: Business rule violation
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: DUPLICATE_TRAJECTORY_NAME
+                message: Trajectory with this name already exists.
+        '422':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+    
+    get:
+      tags:
+        - trajectories
+      summary: List trajectories
+      description: Returns a list of the user's learning trajectories.
+      responses:
+        '200':
+          description: List of trajectories returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trajectory'
+        '401':
+          description: Authentication required
+        '500':
+          description: Internal Server Error
+  
+  /trajectories/{trajectoryId}:  
+    patch:
+      tags:
+        - trajectories
+      summary: Update trajectory
+      description: Updates an existing trajectory.
+      parameters: 
+        - $ref: '#/components/parameters/TrajectoryId'
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Trajectory name
+                  example: Python developer
+                info:
+                  type:
+                    - string
+                    - 'null'
+                  description: Optional trajectory description
+                  example: null
+      responses: 
+        '200':
+          description: Trajectory updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trajectory'
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory not found
+        '409':
+          description: Business rule violation
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: DUPLICATE_TRAJECTORY_NAME
+                message: Trajectory with this name already exists.
+        '422':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+    
+    delete:
+      tags:
+        - trajectories
+      summary: Delete trajectory
+      description: Deletes an existing trajectory.
+      parameters: 
+        - $ref: '#/components/parameters/TrajectoryId'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Authentication required
+        '409':
+          description: Business rule violation
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: TRAJECTORY_HAS_SKILLS
+                message: Trajectory cannot be deleted because it has linked skills.
+        '500':
+          description: Internal Server Error
+
+    get:
+      tags:
+        - trajectories
+      summary: Get trajectory
+      description: Returns an existing trajectory.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+      responses:
+        '200':
+          description: Trajectory returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trajectory'
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory not found
+        '500':
+          description: Internal Server Error
+  
+  /trajectories/{trajectoryId}/skills:
+    post:
+      tags:
+        - skills
+      summary: Create skill
+      description: Creates a new skill within the trajectory.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+      requestBody:
+        required: true
+        content:
+          application/json: 
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: Skill name
+                  example: Python
+                info:
+                  type:
+                    - string
+                    - 'null'
+                  description: Optional skill description
+                  example: null
+                skillAreaId:
+                  type:
+                    - integer
+                    - 'null'
+                  description: Optional skill area identifier
+                  example: null
+                skillType:
+                  $ref: '#/components/schemas/SkillType'
+      responses: 
+        '201':
+          description: Skill created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory or skill area not found
+        '409':
+          description: Business rule violation
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: DUPLICATE_SKILL_NAME
+                message: Skill with this name already exists in this trajectory.
+        '422':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+    
+    get:
+      tags:
+        - skills
+      summary: List skills
+      description: Returns a list of skills for the specified trajectory.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+        - name: skillAreaId
+          in: query
+          required: false
+          description: Filters skills by skill area
+          schema:
+            type:
+              - integer
+              - 'null'
+            example: 2
+        - name: skillType
+          in: query
+          required: false
+          description: Filters skills by skill type
+          schema:
+            type: string
+            enum:
+              - basic
+              - additional
+            example: basic
+      responses:
+        '200':
+          description: List of skills returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SkillListItem'
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory not found
+        '422':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+        
+  /trajectories/{trajectoryId}/skills/{skillId}:
+    get:
+      tags:
+        - skills
+      summary: Get skill
+      description: Returns an existing skill.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+        - $ref: '#/components/parameters/SkillId'
+      responses:
+        '200':
+          description: Skill returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '401':
+          description: Authentication required
+        '404':
+          description: Skill or trajectory not found
+        '500':
+          description: Internal Server Error
+
+    patch:
+      tags: 
+        - skills
+      summary: Update skill
+      description: Updates an existing skill.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+        - $ref: '#/components/parameters/SkillId'
+      requestBody:
+        required: true
+        content:
+          application/json: 
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Skill name
+                  example: Python
+                info:
+                  type:
+                    - string
+                    - 'null'
+                  description: Optional skill description
+                  example: null
+                skillAreaId:
+                  type:
+                    - integer
+                    - 'null'
+                  description: Optional skill area identifier
+                  example: null
+                skillType:
+                  type:
+                    - string
+                    - 'null'
+                  enum:
+                    - basic
+                    - additional
+                    - 'null'
+                  example: basic
+      responses: 
+        '200':
+          description: Skill updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory or skill not found
+        '409':
+          description: Business rule violation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: DUPLICATE_SKILL_NAME
+                message: Skill with this name already exists in this trajectory.
+        '422':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+    
+    delete:
+      tags: 
+        - skills
+      summary: Delete skill
+      description: Deletes an existing skill.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+        - $ref: '#/components/parameters/SkillId'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory not found
+        '409':
+          description: Business rule violation
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: SKILL_HAS_ACTIONS
+                message: Skill cannot be deleted because it has linked actions.
+        '500':
+          description: Internal Server Error
+
+  /trajectories/{trajectoryId}/skillAreas:
+    get:
+      tags:
+        - skillAreas
+      summary: List skill areas
+      description: Returns the skill areas available in the specific trajectory.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+      responses:
+        '200':
+          description: Skill areas returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LookupItem'
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory not found
+        '500':
+          description: Internal Server Error
+  
+  /actionTypes:
+    get:
+      tags:
+        - actionTypes
+      summary: List action types
+      description: Returns a list of available action types.
+      responses:
+        '200':
+          description: Action types returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LookupItem'
+        '401':
+          description: Authentication required
+        '500':
+          description: Internal Server Error
+
+  /actions:
+    post:
+      tags:
+        - actions
+      summary: Create action
+      description: Creates a new action.
+      requestBody:
+        required: true
+        content:
+          application/json: 
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: Action name
+                  example: Skills Map
+                info:
+                  type:
+                    - string
+                    - 'null'
+                  description: Optional action description
+                  example: null
+                source: 
+                  type:
+                    - string
+                    - 'null'
+                  description: Optional action source or reference for the action
+                  example: null
+                actionTypeId:
+                  type:
+                    - integer
+                    - 'null'
+                  description: Optional action type identifier
+                  example: 1
+                status:
+                  $ref: '#/components/schemas/ActionStatus'
+      responses:
+        '201':
+          description: Action created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '401':
+          description: Authentication required
+        '404':
+          description: Action type not found
+        '422':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+    
+    get:
+      tags:
+        - actions
+      summary: List actions
+      description: Returns a list of actions.
+      parameters:
+        - name: search
+          in: query
+          required: false
+          description: Searches actions by name
+          schema:
+           type:
+            - string
+            - 'null'
+           example: Seven databases
+        - name: trajectoryId
+          in: query
+          required: false
+          description: Filters actions by trajectory
+          schema:
+            type:
+              - integer
+              - 'null'
+            example: 2
+        - name: skillId
+          in: query
+          required: false
+          description: Filters actions by skill
+          schema:
+            type:
+              - integer
+              - 'null'
+            example: 3
+        - name: actionTypeId
+          in: query
+          required: false
+          description: Filters actions by action type
+          schema:
+            type:
+              - integer
+              - 'null'
+            example: 2
+        - name: status
+          in: query
+          required: false
+          description: Filters actions by status
+          schema:
+            type: string
+            enum:
+              - draft
+              - not_started
+              - in_progress
+              - completed
+            example: draft
+      responses:
+        '200':
+          description: List of actions returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ActionListItem'
+        '401':
+          description: Authentication required
+        '500':
+          description: Internal Server Error
+
+  /actions/{actionId}:
+    patch:
+      tags:
+        - actions
+      summary: Update action
+      description: Updates an existing action.
+      parameters:
+        - $ref: '#/components/parameters/ActionId'
+      requestBody:
+        required: true
+        content:
+          application/json: 
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Action name
+                  example: Skills Map
+                info:
+                  type:
+                  - string
+                  - 'null'
+                  description: Optional action description
+                  example: null
+                source: 
+                  type:
+                  - string
+                  - 'null'
+                  description: Optional action source description
+                  example: null
+                actionTypeId:
+                    type:
+                      - integer
+                      - 'null'
+                    description: Optional action type identifier
+                    example: 1
+                status:
+                  $ref: '#/components/schemas/ActionStatus'
+      responses:
+        '200':
+          description: Action updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '401':
+          description: Authentication required
+        '404':
+          description: Action or action type not found
+        '422':
+          description: Invalid input
+        '500':
+          description: Internal Server Error
+    
+    delete:
+      tags:
+        - actions 
+      summary: Delete action
+      description: Deletes an existing action.
+      parameters:
+        - $ref: '#/components/parameters/ActionId'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Authentication required
+        '409':
+          description: Business rule violation
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: ACTION_HAS_SKILLS
+                message: Action cannot be deleted while it has linked skills.
+        '500':
+          description: Internal Server Error
+    get:
+      tags:
+        - actions
+      summary: Get action
+      description: Returns an existing action.
+      parameters:
+        - $ref: '#/components/parameters/ActionId'
+      responses:
+        '200':
+          description: Action returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '401':
+          description: Authentication required
+        '404':
+          description: Action not found
+        '500':
+          description: Internal Server Error
+
+  /trajectories/{trajectoryId}/skills/{skillId}/actions:
+    get:
+      tags:
+        - actions
+      summary: List actions of a skill
+      description: Returns the actions linked to the specified skill.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+        - $ref: '#/components/parameters/SkillId'
+        - name: actionTypeId
+          in: query
+          required: false
+          description: Filters actions by action type
+          schema:
+            type:
+              - integer
+              - 'null'
+            example: 1
+      responses:
+        '200':
+          description: List of actions returned successfully
+          content:
+            application/json: 
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ActionListItem'
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory or skill not found
+        '500':
+          description: Internal Server Error
+  
+  /actions/{actionId}/skills/{skillId}:
+    put:
+      tags:
+        - actions
+        - skills
+      summary: Link skill to action
+      description: Adds the link between the specified action and skill.
+      parameters:
+        - $ref: '#/components/parameters/ActionId'
+        - $ref: '#/components/parameters/SkillId'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Authentication required
+        '404':
+          description: Action or skill not found
+        '500':
+          description: Internal Server Error
+    
+    delete:
+      tags:
+        - actions
+        - skills
+      summary: Unlink skill from action
+      description: Removes the link between the specified action and skill.
+      parameters:
+        - $ref: '#/components/parameters/ActionId'
+        - $ref: '#/components/parameters/SkillId'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Authentication required
+        '500':
+          description: Internal Server Error
+  
+  /trajectories/{trajectoryId}/actions/{actionId}/skills:
+    get:
+      tags:
+        - skills
+      summary: List skills linked to action
+      description: Returns skills within the specified trajectory that are linked to the specified action.
+      parameters:
+        - $ref: '#/components/parameters/TrajectoryId'
+        - $ref: '#/components/parameters/ActionId'
+      responses:
+        '200':
+          description: List of skills returned successfully
+          content:
+            application/json: 
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SkillListItem'
+        '401':
+          description: Authentication required
+        '404':
+          description: Trajectory or action not found
+        '500':
+          description: Internal Server Error
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description:
+        Authenticate by providing a Bearer token in the Authorization header. The API is stateless. To sign out, the client simply discards the token. No logout endpoint is required.
+
+  schemas:
+    Trajectory:
+      type: object
+      required:
+        - id
+        - name
+        - info
+      properties:
+        id:
+          type: integer
+          description: Trajectory identifier
+          example: 1
+        name:
+          type: string
+          description: Trajectory name
+          example: Python developer
+        info:
+          type:
+            - string
+            - 'null'
+          description: Optional trajectory description
+          example: null
+    SkillListItem:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          description: Skill identifier
+          example: 1
+        name:
+          type: string
+          description: Skill name
+          example: SQL
+    ActionStatus:
+      type: string
+      enum:
+        - draft
+        - not_started
+        - in_progress
+        - completed
+      example: in_progress
+    SkillType:
+      type:
+        - string
+        - 'null'
+      enum:
+        - basic
+        - additional
+      example: basic
+    Skill:
+      type: object
+      required:
+        - id
+        - name
+        - info
+        - skillAreaName
+        - skillType
+      properties:
+        id:
+          type: integer
+          description: Skill identifier
+          example: 1
+        name:
+          type: string
+          description: Skill name
+          example: Python
+        info:
+          type:
+            - string
+            - 'null'
+          description: Optional skill description
+          example: null
+        skillAreaName:
+          type:
+            - string
+            - 'null'
+          description: Optional skill area name
+          example: Programming languages
+        skillType:
+          $ref: '#/components/schemas/SkillType'
+    LookupItem:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          example: 3
+        name:
+          type: string
+          example: Item name
+    Action:
+      type: object
+      required: 
+        - id
+        - name
+        - info
+        - source
+        - actionTypeName
+        - status
+      properties:
+        id:
+          type: integer
+          description: Action identifier
+          example: 1
+        name:
+          type: string
+          description: Acton name
+          example: Skills map
+        info:
+          type:
+            - string
+            - 'null'
+          description: Optional action description
+          example: null
+        source:
+          type:
+            - string
+            - 'null'
+          description: Optional action source description
+          example: 'null'
+        actionTypeName:
+          type:
+            - string
+            - 'null'
+          description: Action category name
+          example: project
+        status:
+          $ref: '#/components/schemas/ActionStatus'
+    ActionListItem:
+      type: object
+      required:
+        - id
+        - name
+        - actionTypeName
+        - status
+      properties:
+        id:
+          type: integer
+          description: Action identifier
+          example: 6
+        name:
+          type: string
+          description: Action name
+          example: Seven databases
+        actionTypeName:
+          type:
+            - string
+            - 'null'
+          description: Optional action type name
+          example: book
+        status:
+            $ref: '#/components/schemas/ActionStatus'
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+  
+  parameters:
+    TrajectoryId:
+      name: trajectoryId
+      in: path
+      required: true
+      description: Trajectory identifier
+      schema:
+        type: integer
+        example: 1
+    SkillId:
+      name: skillId
+      in: path
+      required: true
+      description: Skill identifier
+      schema:
+        type: integer
+        example: 1
+    ActionId:
+      name: actionId
+      in: path
+      required: true
+      description: Action identifier
+      schema:
+        type: integer
+        example: 1
