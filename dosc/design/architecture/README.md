@@ -7,6 +7,6 @@ This diagram shows the system boundaries, the primary actor, and external intera
 See [context-diagram.puml](./context-diagram.puml)
 ## C4 Container Diagram
 This diagram shows the main containers of the application and the relationships between them.
-![C4 Container Diagram](./container-diagram.png)
+![C4 Container Diagram](./container-diagram.svg)
 ### PlantUML source
 See [container-diagram.puml](./container-diagram.puml)
