@@ -9,17 +9,23 @@ The main UI goals are:
 - make relationships between skills and actions easy to understand.
 
 ## Wireframes
-Wireframes describe the main application screens and user interactions.
-
-Included screens:
-- Authentication
-- Home page
-- Trajectory management
-- Skill management
-- Action management
-- Skill-action linking
-
-See [Wireframes](./wireframes.pdf).  
+Wireframes describe the main application screens and user interactions. Included screens:
+### Authentication and Home Page
+- [Sign In Form](./screens/login.png)
+- [Home Page](./screens/login.png)
+- [Sign Out Confirmation Modal](./screens/login.png)
+### Trajectory and Skill Management
+- [Trajectory List](./screens/login.png)
+- [Create and Edit Trajectory Form](./screens/login.png)
+- [Trajectory Details](./screens/login.png)
+- [Delete Confirmation Modal Example](./screens/login.png)
+- [Create and Edit Skill Form](./screens/login.png)
+- [Skill Details](./screens/login.png)
+### Action management
+- [Action List](./screens/login.png)
+- [Create and Edit Action Form](./screens/login.png)
+- [Action Details](./screens/login.png)
+- [Add Skill to Action](./screens/login.png)
 
 ## Dialogue Map
 The dialogue map shows navigation between application screens, dialogs, and user interactions.  
