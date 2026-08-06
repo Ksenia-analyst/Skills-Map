@@ -21,7 +21,7 @@ Wireframes describe the main application screens and user interactions. Included
 - [Delete Confirmation Modal Example](./screens/login.png)
 - [Create and Edit Skill Form](./screens/login.png)
 - [Skill Details](./screens/login.png)
-### Action management
+### Action Management
 - [Action List](./screens/login.png)
 - [Create and Edit Action Form](./screens/login.png)
 - [Action Details](./screens/login.png)
