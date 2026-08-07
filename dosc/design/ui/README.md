@@ -29,9 +29,9 @@ Wireframes describe the main application screens and user interactions. The foll
 - [Action Details](./wireframes/Action-Details.pdf)
 - [Add Skill to Action Modal](./wireframes/Add-Skill-to-Action.pdf)
 
-## Dialogue Map
-The dialogue map shows navigation between application screens, dialogs, and user interactions.  
-See [Dialogue Map](./dialogue-map.png).
+## Navigation Map
+The navigation map shows navigation between application screens, dialogs, and user interactions.  
+![Navigation Map](./navigation-map.svg)
 
 ## Traceability
 The table below shows the relationship between functional requirements and the corresponding user interface screens.
