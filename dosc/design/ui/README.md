@@ -31,7 +31,7 @@ Wireframes describe the main application screens and user interactions. The foll
 
 ## Navigation Map
 The navigation map shows navigation between application screens, dialogs, and user interactions.  
-![Navigation Map](./navigation-map.svg)
+![Navigation Map](./Navigation-Map.svg)
 
 ## Traceability
 The table below shows the relationship between functional requirements and the corresponding user interface screens.
