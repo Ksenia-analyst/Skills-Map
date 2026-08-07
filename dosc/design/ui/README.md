@@ -9,23 +9,25 @@ The main UI goals are:
 - make relationships between skills and actions easy to understand.
 
 ## Wireframes
-Wireframes describe the main application screens and user interactions. Included screens:
+Wireframes describe the main application screens and user interactions. The following screens are included:
 ### Authentication and Home Page
-- [Sign In Form](./screens/login.png)
-- [Home Page](./screens/login.png)
-- [Sign Out Confirmation Modal](./screens/login.png)
-### Trajectory and Skill Management
-- [Trajectory List](./screens/login.png)
-- [Create and Edit Trajectory Form](./screens/login.png). Create Form = empty fields. Edit Form = prefilled fields
-- [Trajectory Details](./screens/login.png)
-- [Delete Confirmation Modal Example](./screens/login.png). The same modal is reused for Delete Trajectory, Delete Skill, Delete Action
-- [Create and Edit Skill Form](./screens/login.png). Create Form = empty fields. Edit Form = prefilled fields
-- [Skill Details](./screens/login.png)
-### Action Management
-- [Action List](./screens/login.png)
-- [Create and Edit Action Form](./screens/login.png). Create Form = empty fields. Edit Form = prefilled fields
-- [Action Details](./screens/login.png)
-- [Add Skill to Action Dialog](./screens/login.png)
+- [Sign In Form](./wireframes/Sign-In-Form.pdf)
+- [Home Page](./wireframes/Home-Page.pdf)
+- [Sign Out Confirmation Modal](./wireframes/Sign-Out-Confirmation-Modal.pdf)
+### Trajectories and Skills Management
+- [Trajectory List](./wireframes/Trajectory-List.pdf)
+- [Create and Edit Trajectory Form](./wireframes/Create-and-Edit-Trajectory-Form.pdf)
+  > Create forms contain empty fields; edit forms contain prefilled fields.
+- [Trajectory Details](./wireframes/Trajectory-Details.pdf)
+- [Delete Confirmation Modal Example](./wireframes/Delete-Confirmation-Modal-Example.pdf)
+  > The same modal is reused for deleting trajectories, skills, and actions.
+- [Create and Edit Skill Form](./wireframes/Create-and-Edit-Skill-Form.pdf)
+- [Skill Details](./wireframes/Skill-Details.pdf)
+### Actions Management
+- [Action List](./wireframes/Action-List.pdf)
+- [Create and Edit Action Form](./wireframes/Create-and-Edit-Action-Form.pdf)
+- [Action Details](./wireframes/Action-Details.pdf)
+- [Add Skill to Action Modal](./wireframes/Add-Skill-to-Action.pdf)
 
 ## Dialogue Map
 The dialogue map shows navigation between application screens, dialogs, and user interactions.  
