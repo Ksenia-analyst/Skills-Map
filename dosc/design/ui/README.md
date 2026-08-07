@@ -34,11 +34,16 @@ The navigation map shows navigation between application screens, dialogs, and us
 ![Navigation Map](./Navigation-Map.svg)
 
 ## Traceability
-The table below shows the relationship between functional requirements and the corresponding user interface screens.
+The table below shows the relationship between user stories and the corresponding user interface screens.
 
 | User Story | Related UI |
 |------------|------------|
-| US01 Create Trajectory | Trajectory Create Screen |
-| US04 Manage Skill | Skill List, Skill Details, Skill Edit |
-| US05 Add Action and Resource | Action Create Screen |
-| US06 View Skill Actions | Skill Details Screen |
+| US01 Create Trajectory | Trajectory List, Create and Edit Trajectory Form|
+| US02 Skill Search | Trajectory Details (Skill Search) |
+| US04 Manage Skill | Trajectory Details, Create and Edit Skill Form, Skill Details |
+| US05 Add Action and Resource | Action List, Create and Edit Action Form, Action Details |
+| US06 View Skill Actions | Skill Details |
+| US07 Delete Action and Source | Action List, Delete Confirmation Modal |
+| US11 Action Status | Create and Edit Action Form, Action Details |
+
+
