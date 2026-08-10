@@ -19,7 +19,7 @@
 
 ### Документация
 - [Vision & Scope](./dosc/product/Vision-Scope.md)
-- [User Stories](./product/User-Stories.md)
-- [Use Cases](./use-cases/README.md)
-- [Non-Functional Requirements](./docs/Non-Functional-Requirements.md)
-- [Design](./design/README.md)
+- [User Stories](./dosc/product/User-Stories.md)
+- [Use Cases](./dosc/product/use-cases/README.md)
+- [Non-Functional Requirements](./dosc/product/Non-Functional-Requirements.md)
+- [Design](./dosc/design/README.md)
