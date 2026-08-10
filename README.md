@@ -10,7 +10,7 @@
 
 ## Текущий статус:
 ✔ Требования к продукту завершены  
-✔ Проектирование приложения завершено (архитектура, база данных, REST API)  
+✔ Проектирование приложения завершено  
 ⏳ Реализация в процессе
 
 ## Стек технологий
@@ -18,9 +18,8 @@
 > Окончательный технологический стек будет определен на этапе реализации.
 
 ### Документация
-- Vision
-- Scope
-- Functional Requirements
-- Non-Functional Requirements
-- Architecture Design
-- OpenAPI Specification
+- [Vision & Scope](./docs/Vision-Scope.md)
+- [User Stories](./docs/User-Stories.md)
+- [Use Cases](./use-cases/README.md)
+- [Non-Functional Requirements](./docs/Non-Functional-Requirements.md)
+- [Design](./design/README.md)
