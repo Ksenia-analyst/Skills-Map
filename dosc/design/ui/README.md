@@ -38,12 +38,12 @@ The table below shows the relationship between user stories and the correspondin
 
 | User Story | Related UI |
 |------------|------------|
-| US01 Create Trajectory | Trajectory List, Create and Edit Trajectory Form|
-| US02 Skill Search | Trajectory Details (Skill Search) |
-| US04 Manage Skill | Trajectory Details, Create and Edit Skill Form, Skill Details |
-| US05 Add Action and Resource | Action List, Create and Edit Action Form, Action Details |
-| US06 View Skill Actions | Skill Details |
+| US01 Create Trajectory | Trajectory List, Create and Edit Trajectory Form |
+| US02 Skill Search | Trajectory Details (Skill Filters) |
+| US04 Manage Skill | Trajectory Details (Linked Skills), Create and Edit Skill Form, Skill Details |
+| US05 Add Action and Source | Action List, Create and Edit Action Form, Action Details |
+| US06 View Skill Actions | Skill Details (Linked Actions), Action Details |
 | US07 Delete Action and Source | Action List, Delete Confirmation Modal |
-| US11 Action Status | Create and Edit Action Form, Action Details |
+| US11 Action Status | Action List, Create and Edit Action Form, Action Details, Skill Details (Linked Actions) |
 
 
