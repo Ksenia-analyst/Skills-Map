@@ -18,8 +18,8 @@
 > Окончательный технологический стек будет определен на этапе реализации.
 
 ### Документация
-- [Vision & Scope](./dosc/product/Vision-Scope.md)
-- [User Stories](./dosc/product/User-Stories.md)
-- [Use Cases](./dosc/product/use-cases/README.md)
-- [Non-Functional Requirements](./dosc/product/Non-Functional-Requirements.md)
-- [Design](./dosc/design/README.md)
+- [Vision & Scope](./docs/product/Vision-Scope.md)
+- [User Stories](./docs/product/User-Stories.md)
+- [Use Cases](./docs/product/use-cases/README.md)
+- [Non-Functional Requirements](./docs/product/Non-Functional-Requirements.md)
+- [Design](./docs/design/README.md)
