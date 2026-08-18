@@ -1,5 +1,6 @@
 # User Interface Design
-This section contains the user interface design artifacts for the Skills Map application, including wireframes, navigation, and traceability to functional requirements.
+This section contains the user interface design artifacts for the Skills Map application, including wireframes, screen navigation, and traceability between user stories and interface screens.
+
 ## Design Goals
 The interface is designed to support personal management of learning trajectories, skills, and actions.
 The main UI goals are:
@@ -14,6 +15,7 @@ Wireframes describe the main application screens and user interactions. The foll
 - [Sign In Form](./wireframes/Sign-In-Form.pdf)
 - [Home Page](./wireframes/Home-Page.pdf)
 - [Sign Out Confirmation Modal](./wireframes/Sign-Out-Confirmation-Modal.pdf)
+
 ### Trajectories and Skills Management
 - [Trajectory List](./wireframes/Trajectory-List.pdf)
 - [Create and Edit Trajectory Form](./wireframes/Create-and-Edit-Trajectory-Form.pdf)
@@ -23,6 +25,7 @@ Wireframes describe the main application screens and user interactions. The foll
   > The same modal is reused for deleting trajectories, skills, and actions.
 - [Create and Edit Skill Form](./wireframes/Create-and-Edit-Skill-Form.pdf)
 - [Skill Details](./wireframes/Skill-Details.pdf)
+
 ### Actions Management
 - [Action List](./wireframes/Action-List.pdf)
 - [Create and Edit Action Form](./wireframes/Create-and-Edit-Action-Form.pdf)
